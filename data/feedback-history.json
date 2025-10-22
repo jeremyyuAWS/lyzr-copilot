@@ -1,0 +1,34 @@
+{
+  "feedback": [
+    {
+      "id": "fb-001",
+      "timestamp": "2024-12-19T10:30:00Z",
+      "input_preview": "We are looking for a comprehensive software solution...",
+      "scenario_id": "rfp-enterprise",
+      "rating": "positive",
+      "comment": "Great job identifying the enterprise intent and routing to sales. The extracted items were spot on.",
+      "tags": ["Intent Correct", "Routing Accurate", "Items Missing"],
+      "user": "sarah.johnson@company.com"
+    },
+    {
+      "id": "fb-002", 
+      "timestamp": "2024-12-19T09:15:00Z",
+      "input_preview": "Hi, I'm having trouble with my invoice...",
+      "scenario_id": "support-billing",
+      "rating": "negative",
+      "comment": "The routing should go to billing specialists, not general support. Also missed the urgency of the refund request.",
+      "tags": ["Routing Needs Update", "Response Too Generic"],
+      "user": "mike.chen@company.com"
+    },
+    {
+      "id": "fb-003",
+      "timestamp": "2024-12-19T08:45:00Z", 
+      "input_preview": "Our API integration stopped working yesterday...",
+      "scenario_id": "technical-support",
+      "rating": "positive",
+      "comment": "Perfect technical classification and good identification of critical priority. KB matches were very relevant.",
+      "tags": ["Intent Correct", "KB Match Helpful", "Gaps Well Identified"],
+      "user": "alex.rivera@company.com"
+    }
+  ]
+}

@@ -1,0 +1,988 @@
+{
+  "scenarios": [
+    {
+      "id": "manufacturing-custom-fabrication",
+      "title": "Custom Stainless Steel Fabrication RFP",
+      "description": "Demonstrates how manufacturing RFPs with technical specifications get structured into procurement-ready data",
+      "input": "Penn Stainless Products is requesting quotes for custom fabrication work:\n\n• 50x stainless steel tanks (316L grade)\n• Dimensions: 4ft diameter x 8ft height\n• Wall thickness: 3/16 inch minimum\n• Internal polished finish (150 grit)\n• ASME pressure vessel certification required\n• Delivery needed by March 15, 2025\n• Installation at our Johnstown, PA facility\n\nWe also need:\n- Material test certificates (MTCs)\n- Welding procedure specifications (WPS)\n- Non-destructive testing (NDT) reports\n- Hydrostatic testing at 150 PSI\n\nPlease include lead times and warranty terms.\nContact: engineering@pennstainless.com\nProject #: PSP-2025-TANK-001",
+      "translation_notes": {
+        "intent_extraction": "Identifies this as a manufacturing RFP by recognizing keywords: 'stainless steel', 'fabrication', 'tanks', 'ASME'",
+        "routing_logic": "Routes to specialized manufacturing team based on technical requirements and certification needs",
+        "item_parsing": "Extracts quantity (50), material grade (316L), dimensions (4ft x 8ft), and creates structured SKUs",
+        "compliance_detection": "Recognizes ASME certification requirement and testing specifications",
+        "location_extraction": "Identifies delivery location (Johnstown, PA) and project number for tracking"
+      },
+      "response": {
+        "intent": "Manufacturing RFP - Custom Fabrication",
+        "intent_confidence": 0.96,
+        "routing": "Manufacturing Team > Custom Fabrication",
+        "routing_confidence": 0.94,
+        "confidence": 0.96,
+        "items": [
+          {
+            "sku": "TANK-316L-4X8",
+            "description": "Stainless Steel Tank 316L (4ft x 8ft)",
+            "quantity": 50,
+            "category": "Custom Fabrication",
+            "confidence": 0.93,
+            "extraction_source": "50x stainless steel tanks (316L grade), 4ft diameter x 8ft height"
+          },
+          {
+            "sku": "CERT-ASME",
+            "description": "ASME Pressure Vessel Certification",
+            "quantity": 50,
+            "category": "Certification",
+            "confidence": 0.91,
+            "extraction_source": "ASME pressure vessel certification required"
+          },
+          {
+            "sku": "FINISH-150",
+            "description": "Internal Polish Finish (150 grit)",
+            "quantity": 50,
+            "category": "Surface Treatment",
+            "confidence": 0.89,
+            "extraction_source": "Internal polished finish (150 grit)"
+          },
+          {
+            "sku": "TEST-HYDRO",
+            "description": "Hydrostatic Testing (150 PSI)",
+            "quantity": 50,
+            "category": "Quality Testing",
+            "confidence": 0.87,
+            "extraction_source": "Hydrostatic testing at 150 PSI"
+          },
+          {
+            "sku": "INSTALL-PA",
+            "description": "Installation Service (Johnstown, PA)",
+            "quantity": 1,
+            "category": "Installation",
+            "confidence": 0.84,
+            "extraction_source": "Installation at our Johnstown, PA facility"
+          }
+        ],
+        "kb_matches": [
+          {
+            "title": "316L Stainless Steel Specifications",
+            "confidence": 0.95,
+            "relevance": "High",
+            "section": "Material Properties & Applications",
+            "row_start": 78,
+            "row_end": 112,
+            "match_reason": "Input specifies 316L grade material requirements"
+          },
+          {
+            "title": "ASME Pressure Vessel Standards",
+            "confidence": 0.92,
+            "relevance": "High",
+            "section": "Section VIII Div 1 Requirements",
+            "row_start": 234,
+            "row_end": 267,
+            "match_reason": "ASME certification explicitly required in RFP"
+          },
+          {
+            "title": "Custom Fabrication Lead Times",
+            "confidence": 0.88,
+            "relevance": "High",
+            "section": "Complex Tank Production",
+            "row_start": 45,
+            "row_end": 73,
+            "match_reason": "Request asks for lead times on custom tank fabrication"
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "description": "No specific pricing for 316L tanks with ASME certification",
+            "confidence": 0.91,
+            "gap_reason": "Pricing information not available in current knowledge base"
+          },
+          {
+            "description": "Installation logistics for Johnstown, PA not documented",
+            "confidence": 0.87,
+            "gap_reason": "Location-specific installation procedures missing"
+          },
+          {
+            "description": "Lead time for 50-unit custom fabrication orders unclear",
+            "confidence": 0.84,
+            "gap_reason": "High-volume custom order timelines not defined"
+          }
+        ],
+        "extracted_metadata": {
+          "material_grade": "316L Stainless Steel",
+          "quantity": "50 units",
+          "dimensions": "4ft diameter x 8ft height",
+          "certification": "ASME Pressure Vessel",
+          "delivery_date": "March 15, 2025",
+          "location": "Johnstown, PA",
+          "project_number": "PSP-2025-TANK-001",
+          "pressure_rating": "150 PSI",
+          "contact_email": "engineering@pennstainless.com",
+          "priority": "High"
+        }
+      }
+    },
+    {
+      "id": "construction-project-bid",
+      "title": "Commercial Construction Project Bid",
+      "description": "Shows how construction project specifications get parsed into structured work breakdown and requirements",
+      "input": "Tiny's Construction LLC is bidding on the River Valley Shopping Center expansion:\n\nScope of Work:\n- 45,000 sq ft retail addition\n- Concrete foundation and slab (8 inch thickness)\n- Steel frame construction (150 tons structural steel)\n- Roofing system with TPO membrane\n- HVAC rough-in for 12 units\n- Electrical rough-in (480V/277V, 1200A service)\n- Plumbing rough-in for 8 restroom facilities\n- Fire sprinkler system rough-in\n\nProject Timeline: 18 months\nStart Date: April 1, 2025\nCompletion: October 1, 2026\n\nRequired Certifications:\n- OSHA 30-hour certification for all supervisors\n- Prevailing wage compliance\n- Minority Business Enterprise (MBE) participation 15%\n- Environmental compliance (stormwater management)\n\nSubmit bids by February 15, 2025\nContact: projects@tinysconstruction.com\nBond Required: $2.5M Performance Bond",
+      "translation_notes": {
+        "intent_extraction": "Recognizes construction bid by keywords: 'construction', 'bidding', 'scope of work', 'concrete', 'steel frame'",
+        "routing_logic": "Routes to commercial construction team based on project scale and complexity",
+        "scope_parsing": "Breaks down work scope into individual trade categories with quantities",
+        "compliance_tracking": "Identifies certification requirements and regulatory compliance needs",
+        "timeline_extraction": "Captures project schedule and key milestone dates"
+      },
+      "response": {
+        "intent": "Construction Bid Submission",
+        "intent_confidence": 0.97,
+        "routing": "Construction Team > Commercial Projects",
+        "routing_confidence": 0.95,
+        "confidence": 0.97,
+        "items": [
+          {
+            "sku": "CONCRETE-SLAB",
+            "description": "Concrete Foundation & Slab (45,000 sq ft, 8 inch)",
+            "quantity": 45000,
+            "category": "Foundation Work",
+            "confidence": 0.95,
+            "extraction_source": "45,000 sq ft retail addition, Concrete foundation and slab (8 inch thickness)"
+          },
+          {
+            "sku": "STEEL-FRAME",
+            "description": "Structural Steel Frame (150 tons)",
+            "quantity": 150,
+            "category": "Structural",
+            "confidence": 0.93,
+            "extraction_source": "Steel frame construction (150 tons structural steel)"
+          },
+          {
+            "sku": "ROOF-TPO",
+            "description": "TPO Membrane Roofing System",
+            "quantity": 1,
+            "category": "Roofing",
+            "confidence": 0.91,
+            "extraction_source": "Roofing system with TPO membrane"
+          },
+          {
+            "sku": "HVAC-ROUGH",
+            "description": "HVAC Rough-in (12 units)",
+            "quantity": 12,
+            "category": "Mechanical",
+            "confidence": 0.89,
+            "extraction_source": "HVAC rough-in for 12 units"
+          },
+          {
+            "sku": "ELEC-SERVICE",
+            "description": "Electrical Service (480V/277V, 1200A)",
+            "quantity": 1,
+            "category": "Electrical",
+            "confidence": 0.87,
+            "extraction_source": "Electrical rough-in (480V/277V, 1200A service)"
+          },
+          {
+            "sku": "PLUMB-ROUGH",
+            "description": "Plumbing Rough-in (8 restroom facilities)",
+            "quantity": 8,
+            "category": "Plumbing",
+            "confidence": 0.85,
+            "extraction_source": "Plumbing rough-in for 8 restroom facilities"
+          }
+        ],
+        "kb_matches": [
+          {
+            "title": "Commercial Construction Standards",
+            "confidence": 0.94,
+            "relevance": "High",
+            "section": "Retail Space Requirements",
+            "row_start": 89,
+            "row_end": 134,
+            "match_reason": "45,000 sq ft retail addition matches commercial standards"
+          },
+          {
+            "title": "Prevailing Wage Compliance Guide",
+            "confidence": 0.91,
+            "relevance": "High",
+            "section": "Documentation Requirements",
+            "row_start": 45,
+            "row_end": 78,
+            "match_reason": "Prevailing wage compliance explicitly required"
+          },
+          {
+            "title": "OSHA Safety Requirements",
+            "confidence": 0.89,
+            "relevance": "High",
+            "section": "30-Hour Certification Standards",
+            "row_start": 156,
+            "row_end": 201,
+            "match_reason": "OSHA 30-hour certification requirement mentioned"
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "description": "Specific costs for 45,000 sq ft retail construction not available",
+            "confidence": 0.93,
+            "gap_reason": "Pricing database lacks retail construction cost data"
+          },
+          {
+            "description": "River Valley Shopping Center site conditions unknown",
+            "confidence": 0.89,
+            "gap_reason": "Site-specific information not in knowledge base"
+          },
+          {
+            "description": "Local MBE subcontractor database needs update",
+            "confidence": 0.82,
+            "gap_reason": "MBE requirement specified but contractor list outdated"
+          }
+        ],
+        "extracted_metadata": {
+          "project_size": "45,000 sq ft",
+          "project_type": "Retail Addition",
+          "timeline": "18 months",
+          "start_date": "April 1, 2025",
+          "completion_date": "October 1, 2026",
+          "bond_required": "$2.5M Performance Bond",
+          "mbe_requirement": "15%",
+          "bid_deadline": "February 15, 2025",
+          "contact_email": "projects@tinysconstruction.com",
+          "priority": "High"
+        }
+      }
+    },
+    {
+      "id": "energy-renewable-project",
+      "title": "Renewable Energy Grid Integration Proposal",
+      "description": "Demonstrates extraction of complex energy project specifications into structured technical and financial data",
+      "input": "Novitium Energy Solutions is proposing a utility-scale solar farm project:\n\nProject Specifications:\n- 250 MW solar photovoltaic installation\n- 1,200 acres land requirement\n- Battery Energy Storage System (BESS) - 100 MW / 400 MWh\n- Grid interconnection at 138kV transmission level\n- Power Purchase Agreement (PPA) for 25 years\n- Commercial Operation Date (COD): December 2026\n\nRegulatory Requirements:\n- Environmental Impact Assessment (EIA)\n- Federal Aviation Administration (FAA) clearance\n- Endangered Species Act (ESA) consultation\n- Cultural resources survey\n- Interconnection studies (System Impact & Facilities)\n\nFinancial Structure:\n- Investment Tax Credit (ITC) optimization\n- Debt financing: $180M construction loan\n- Tax equity partnership structure\n- Revenue projections: $25M annually\n\nKey Deliverables:\n- Feasibility study report\n- Grid impact analysis\n- Environmental permitting timeline\n- Construction milestone schedule\n\nContact: development@novitiumenergy.com\nProject Code: NE-SOLAR-2025-TX-001",
+      "translation_notes": {
+        "intent_extraction": "Recognizes renewable energy project by keywords: 'solar', 'MW', 'photovoltaic', 'grid interconnection'",
+        "routing_logic": "Routes to energy development team based on utility-scale project complexity",
+        "technical_parsing": "Extracts power ratings (250 MW), storage capacity (100 MW/400 MWh), and grid specifications",
+        "regulatory_mapping": "Identifies required permits and regulatory compliance steps",
+        "financial_extraction": "Captures financing structure and revenue projections"
+      },
+      "response": {
+        "intent": "Renewable Energy Project Proposal",
+        "intent_confidence": 0.98,
+        "routing": "Energy Team > Renewable Development",
+        "routing_confidence": 0.96,
+        "confidence": 0.98,
+        "items": [
+          {
+            "sku": "SOLAR-PV-250MW",
+            "description": "Solar PV Installation (250 MW)",
+            "quantity": 1,
+            "category": "Generation Equipment",
+            "confidence": 0.97,
+            "extraction_source": "250 MW solar photovoltaic installation"
+          },
+          {
+            "sku": "BESS-100MW",
+            "description": "Battery Energy Storage System (100MW/400MWh)",
+            "quantity": 1,
+            "category": "Energy Storage",
+            "confidence": 0.95,
+            "extraction_source": "Battery Energy Storage System (BESS) - 100 MW / 400 MWh"
+          },
+          {
+            "sku": "INTERCONNECT-138KV",
+            "description": "Grid Interconnection (138kV)",
+            "quantity": 1,
+            "category": "Transmission",
+            "confidence": 0.93,
+            "extraction_source": "Grid interconnection at 138kV transmission level"
+          },
+          {
+            "sku": "PPA-25YR",
+            "description": "Power Purchase Agreement (25 years)",
+            "quantity": 1,
+            "category": "Commercial Agreement",
+            "confidence": 0.91,
+            "extraction_source": "Power Purchase Agreement (PPA) for 25 years"
+          },
+          {
+            "sku": "LAND-1200AC",
+            "description": "Land Requirement (1,200 acres)",
+            "quantity": 1200,
+            "category": "Real Estate",
+            "confidence": 0.89,
+            "extraction_source": "1,200 acres land requirement"
+          }
+        ],
+        "kb_matches": [
+          {
+            "title": "Utility-Scale Solar Development Guide",
+            "confidence": 0.96,
+            "relevance": "High",
+            "section": "250MW+ Project Requirements",
+            "row_start": 123,
+            "row_end": 178,
+            "match_reason": "250 MW capacity matches utility-scale development guidelines"
+          },
+          {
+            "title": "Grid Interconnection Procedures",
+            "confidence": 0.94,
+            "relevance": "High",
+            "section": "138kV Transmission Interconnection",
+            "row_start": 234,
+            "row_end": 289,
+            "match_reason": "138kV transmission level interconnection specified"
+          },
+          {
+            "title": "Investment Tax Credit Guidelines",
+            "confidence": 0.89,
+            "relevance": "Medium",
+            "section": "ITC Optimization Strategies",
+            "row_start": 456,
+            "row_end": 501,
+            "match_reason": "ITC optimization mentioned in financial structure"
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "description": "Texas-specific interconnection queue timelines not current",
+            "confidence": 0.92,
+            "gap_reason": "Project code indicates Texas location but state-specific data missing"
+          },
+          {
+            "description": "Current ITC rates for 2026 COD projects unclear",
+            "confidence": 0.88,
+            "gap_reason": "December 2026 COD may have different ITC rates"
+          },
+          {
+            "description": "Land acquisition costs for 1,200-acre solar projects in Texas",
+            "confidence": 0.85,
+            "gap_reason": "Large-scale land requirements but cost data not available"
+          }
+        ],
+        "extracted_metadata": {
+          "capacity": "250 MW",
+          "storage_capacity": "100 MW / 400 MWh",
+          "land_requirement": "1,200 acres",
+          "voltage_level": "138kV",
+          "ppa_term": "25 years",
+          "cod_target": "December 2026",
+          "financing_amount": "$180M",
+          "annual_revenue": "$25M",
+          "project_code": "NE-SOLAR-2025-TX-001",
+          "location": "Texas",
+          "contact_email": "development@novitiumenergy.com",
+          "priority": "Critical"
+        }
+      }
+    },
+    {
+      "id": "legal-compliance-inquiry",
+      "title": "Legal Compliance & Regulatory Inquiry",
+      "description": "Shows how complex regulatory requirements get structured into actionable compliance tasks",
+      "input": "GlobalTech Industries needs urgent clarification on new EU AI Act requirements:\n\nOur AI-powered customer service chatbot processes 50,000+ daily interactions across EU markets. We need to understand:\n\n• Classification under the AI Act (high-risk vs limited risk)\n• Documentation requirements for compliance\n• CE marking and conformity assessment procedures\n• Data protection impact assessment (DPIA) updates\n• Timeline for compliance implementation\n\nAdditional concerns:\n- Cross-border data transfers (EU to US servers)\n- Model transparency and explainability requirements\n- Third-party AI vendor liability sharing\n- Staff training on AI governance frameworks\n\nDeadline: Full compliance required by August 2, 2025\nBudget allocated: €150,000 for legal consultancy\nContact: legal@globaltech-industries.eu\nInternal Reference: GTI-AIACT-2025-001\n\nThis affects our operations in Germany, France, Netherlands, and Spain.",
+      "translation_notes": {
+        "intent_extraction": "Recognizes legal compliance inquiry by keywords: 'EU AI Act', 'compliance', 'regulatory', 'DPIA'",
+        "routing_logic": "Routes to specialized AI compliance legal team based on regulatory complexity",
+        "requirement_parsing": "Breaks down compliance requirements into specific actionable tasks",
+        "scope_analysis": "Identifies geographic scope (4 EU countries) and system scale (50,000+ interactions)",
+        "timeline_extraction": "Captures critical compliance deadline and budget constraints"
+      },
+      "response": {
+        "intent": "Legal Compliance - EU AI Act Requirements",
+        "intent_confidence": 0.95,
+        "routing": "Legal Team > AI Compliance",
+        "routing_confidence": 0.97,
+        "confidence": 0.95,
+        "items": [
+          {
+            "sku": "AIACT-COMPLIANCE",
+            "description": "EU AI Act Compliance Assessment",
+            "quantity": 1,
+            "category": "Legal Service",
+            "confidence": 0.94,
+            "extraction_source": "Classification under the AI Act (high-risk vs limited risk)"
+          },
+          {
+            "sku": "CE-MARKING",
+            "description": "CE Marking and Conformity Assessment",
+            "quantity": 1,
+            "category": "Certification",
+            "confidence": 0.91,
+            "extraction_source": "CE marking and conformity assessment procedures"
+          },
+          {
+            "sku": "DPIA-UPDATE",
+            "description": "Data Protection Impact Assessment Update",
+            "quantity": 1,
+            "category": "Privacy Compliance",
+            "confidence": 0.89,
+            "extraction_source": "Data protection impact assessment (DPIA) updates"
+          },
+          {
+            "sku": "STAFF-TRAINING",
+            "description": "AI Governance Training Program",
+            "quantity": 1,
+            "category": "Training Service",
+            "confidence": 0.86,
+            "extraction_source": "Staff training on AI governance frameworks"
+          },
+          {
+            "sku": "VENDOR-REVIEW",
+            "description": "Third-party AI Vendor Liability Review",
+            "quantity": 1,
+            "category": "Risk Assessment",
+            "confidence": 0.83,
+            "extraction_source": "Third-party AI vendor liability sharing"
+          }
+        ],
+        "kb_matches": [
+          {
+            "title": "EU AI Act Implementation Guide",
+            "confidence": 0.96,
+            "relevance": "High",
+            "section": "High-Risk AI System Classification",
+            "row_start": 234,
+            "row_end": 289,
+            "match_reason": "Customer service chatbot classification inquiry matches guide"
+          },
+          {
+            "title": "CE Marking Requirements for AI",
+            "confidence": 0.93,
+            "relevance": "High",
+            "section": "Conformity Assessment Procedures",
+            "row_start": 345,
+            "row_end": 398,
+            "match_reason": "CE marking procedures explicitly requested"
+          },
+          {
+            "title": "Cross-Border Data Transfer Compliance",
+            "confidence": 0.89,
+            "relevance": "High",
+            "section": "EU-US Data Transfer Mechanisms",
+            "row_start": 456,
+            "row_end": 501,
+            "match_reason": "EU to US server transfers mentioned in concerns"
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "description": "Latest AI Act enforcement guidelines not yet available",
+            "confidence": 0.91,
+            "gap_reason": "Regulatory guidance still being finalized"
+          },
+          {
+            "description": "Specific requirements for customer service chatbots unclear",
+            "confidence": 0.87,
+            "gap_reason": "AI Act application to chatbots with 50,000+ interactions undefined"
+          },
+          {
+            "description": "Multi-country compliance coordination procedures needed",
+            "confidence": 0.84,
+            "gap_reason": "4-country scope (Germany, France, Netherlands, Spain) requires coordination"
+          }
+        ],
+        "extracted_metadata": {
+          "ai_system_type": "Customer Service Chatbot",
+          "daily_interactions": "50,000+",
+          "geographic_scope": "Germany, France, Netherlands, Spain",
+          "compliance_deadline": "August 2, 2025",
+          "budget": "€150,000",
+          "reference_number": "GTI-AIACT-2025-001",
+          "contact_email": "legal@globaltech-industries.eu",
+          "priority": "Critical"
+        }
+      }
+    },
+    {
+      "id": "emergency-service-request",
+      "title": "Emergency Infrastructure Service Request",
+      "description": "Shows how urgent infrastructure emergencies get parsed into immediate action items with priorities",
+      "input": "URGENT: Metro Transit Authority emergency repair needed\n\nSituation: Water main break flooded Union Station tunnel section B-7 at 2:47 AM\n\nImmediate Requirements:\n• Emergency water extraction (estimated 50,000 gallons)\n• Structural integrity assessment of tunnel walls\n• Electrical system safety inspection (480V power distribution affected)\n• Track bed stabilization and re-ballasting\n• Temporary ventilation system installation\n• 24/7 security for work zone\n\nService Disruption:\n- Blue and Red lines suspended\n- 85,000 daily passengers affected\n- Alternative bus service activated\n- Media relations coordination required\n\nContractor Requirements:\n- Active emergency response certification\n- $5M liability insurance minimum\n- Union labor force (Local 825)\n- Environmental hazmat clearance\n- City permit expediting capability\n\nTarget: Service restoration within 72 hours\nEstimated Cost: $500,000 - $750,000\nContact: emergency@metrotransit.gov\nIncident #: MTA-EMR-2025-001\n\nThis is affecting morning commute for downtown business district.",
+      "translation_notes": {
+        "intent_extraction": "Recognizes emergency by keywords: 'URGENT', 'emergency', 'water main break', 'flooded'",
+        "routing_logic": "Routes to emergency response team due to critical infrastructure impact",
+        "priority_assessment": "Identifies 72-hour restoration target and 85,000 passenger impact as high priority",
+        "scope_extraction": "Breaks down emergency tasks into specific work items with quantities",
+        "impact_analysis": "Captures service disruption scope and passenger impact numbers"
+      },
+      "response": {
+        "intent": "Emergency Infrastructure Repair",
+        "intent_confidence": 0.98,
+        "routing": "Emergency Response Team > Infrastructure",
+        "routing_confidence": 0.99,
+        "confidence": 0.98,
+        "items": [
+          {
+            "sku": "WATER-EXTRACT",
+            "description": "Emergency Water Extraction (50,000 gallons)",
+            "quantity": 50000,
+            "category": "Emergency Service",
+            "confidence": 0.97,
+            "extraction_source": "Emergency water extraction (estimated 50,000 gallons)"
+          },
+          {
+            "sku": "STRUCT-ASSESS",
+            "description": "Structural Integrity Assessment",
+            "quantity": 1,
+            "category": "Engineering Service",
+            "confidence": 0.95,
+            "extraction_source": "Structural integrity assessment of tunnel walls"
+          },
+          {
+            "sku": "ELEC-INSPECT",
+            "description": "Electrical Safety Inspection (480V)",
+            "quantity": 1,
+            "category": "Safety Inspection",
+            "confidence": 0.93,
+            "extraction_source": "Electrical system safety inspection (480V power distribution affected)"
+          },
+          {
+            "sku": "TRACK-REPAIR",
+            "description": "Track Bed Stabilization & Re-ballasting",
+            "quantity": 1,
+            "category": "Track Work",
+            "confidence": 0.91,
+            "extraction_source": "Track bed stabilization and re-ballasting"
+          },
+          {
+            "sku": "VENT-TEMP",
+            "description": "Temporary Ventilation System",
+            "quantity": 1,
+            "category": "Life Safety",
+            "confidence": 0.89,
+            "extraction_source": "Temporary ventilation system installation"
+          },
+          {
+            "sku": "SECURITY-24HR",
+            "description": "24/7 Work Zone Security",
+            "quantity": 3,
+            "category": "Security Service",
+            "confidence": 0.86,
+            "extraction_source": "24/7 security for work zone"
+          }
+        ],
+        "kb_matches": [
+          {
+            "title": "Emergency Response Procedures",
+            "confidence": 0.97,
+            "relevance": "High",
+            "section": "Transit System Water Damage Protocol",
+            "row_start": 123,
+            "row_end": 178,
+            "match_reason": "Water main break in transit tunnel matches emergency protocols"
+          },
+          {
+            "title": "Union Station Infrastructure Plans",
+            "confidence": 0.94,
+            "relevance": "High",
+            "section": "Tunnel Section B-7 Specifications",
+            "row_start": 234,
+            "row_end": 289,
+            "match_reason": "Specific tunnel section B-7 mentioned in incident"
+          },
+          {
+            "title": "Contractor Emergency Certification",
+            "confidence": 0.91,
+            "relevance": "High",
+            "section": "Required Certifications & Insurance",
+            "row_start": 345,
+            "row_end": 398,
+            "match_reason": "$5M insurance and emergency certification requirements specified"
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "description": "Water source and pressure data for tunnel section B-7",
+            "confidence": 0.93,
+            "gap_reason": "Water main break details not documented for this tunnel section"
+          },
+          {
+            "description": "Current contractor availability for emergency response",
+            "confidence": 0.89,
+            "gap_reason": "72-hour timeline requires immediate contractor availability check"
+          },
+          {
+            "description": "Environmental impact assessment for tunnel flooding",
+            "confidence": 0.81,
+            "gap_reason": "50,000 gallon water extraction may have environmental implications"
+          }
+        ],
+        "extracted_metadata": {
+          "incident_time": "2:47 AM",
+          "location": "Union Station tunnel section B-7",
+          "affected_lines": "Blue and Red lines",
+          "passenger_impact": "85,000 daily passengers",
+          "restoration_target": "72 hours",
+          "cost_estimate": "$500,000 - $750,000",
+          "incident_number": "MTA-EMR-2025-001",
+          "contact_email": "emergency@metrotransit.gov",
+          "priority": "Emergency"
+        }
+      }
+    },
+    {
+      "id": "rfp-enterprise",
+      "title": "Enterprise RFP for Software Licensing",
+      "description": "Classic enterprise software RFP showing how business requirements get structured into procurement items",
+      "input": "We are looking for a comprehensive software solution for our 500-employee company. We need:\n\n1. Cloud-based project management tools\n2. Customer relationship management (CRM) system\n3. Enterprise security features\n4. 24/7 support\n5. API integrations with our existing systems\n\nPlease provide pricing for annual licensing, implementation timeline, and security certifications. We need this by Q1 2025.\n\nContact: procurement@acmecorp.com\nBudget: $50,000-$100,000 annually",
+      "translation_notes": {
+        "intent_extraction": "Recognizes enterprise RFP by keywords: 'comprehensive software solution', '500-employee', 'annual licensing'",
+        "routing_logic": "Routes to enterprise sales team based on company size and budget range",
+        "requirement_parsing": "Breaks down software needs into specific product categories",
+        "budget_extraction": "Captures budget range and timeline constraints",
+        "contact_identification": "Extracts procurement contact for follow-up"
+      },
+      "response": {
+        "intent": "Request for Proposal - Enterprise Software",
+        "intent_confidence": 0.94,
+        "routing": "Sales Team > Enterprise Solutions",
+        "routing_confidence": 0.91,
+        "confidence": 0.94,
+        "items": [
+          {
+            "sku": "ENT-PM-500",
+            "description": "Enterprise Project Management (500 users)",
+            "quantity": 1,
+            "category": "Software License",
+            "confidence": 0.89,
+            "extraction_source": "Cloud-based project management tools, 500-employee company"
+          },
+          {
+            "sku": "ENT-CRM-500",
+            "description": "Enterprise CRM System (500 users)",
+            "quantity": 1,
+            "category": "Software License",
+            "confidence": 0.87,
+            "extraction_source": "Customer relationship management (CRM) system"
+          },
+          {
+            "sku": "SEC-ADDON",
+            "description": "Advanced Security Package",
+            "quantity": 1,
+            "category": "Add-on",
+            "confidence": 0.92,
+            "extraction_source": "Enterprise security features"
+          },
+          {
+            "sku": "SUPPORT-247",
+            "description": "24/7 Premium Support",
+            "quantity": 1,
+            "category": "Service",
+            "confidence": 0.85,
+            "extraction_source": "24/7 support"
+          }
+        ],
+        "kb_matches": [
+          {
+            "title": "Enterprise Pricing Guide 2024",
+            "confidence": 0.92,
+            "relevance": "High",
+            "section": "Annual Licensing Tiers",
+            "row_start": 45,
+            "row_end": 78,
+            "match_reason": "Request asks for annual licensing pricing"
+          },
+          {
+            "title": "Security Certifications Overview",
+            "confidence": 0.89,
+            "relevance": "High",
+            "section": "SOC 2, ISO 27001 Details",
+            "row_start": 12,
+            "row_end": 34,
+            "match_reason": "Security certifications specifically requested"
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "description": "No specific pricing for 500-user enterprise tier",
+            "confidence": 0.88,
+            "gap_reason": "Pricing table doesn't include 500-user configuration"
+          },
+          {
+            "description": "Missing Q1 2025 implementation timeline estimates",
+            "confidence": 0.91,
+            "gap_reason": "Q1 2025 deadline specified but timeline data missing"
+          }
+        ],
+        "extracted_metadata": {
+          "company_size": "500 employees",
+          "budget_range": "$50,000-$100,000",
+          "timeline": "Q1 2025",
+          "contact_email": "procurement@acmecorp.com",
+          "priority": "High"
+        }
+      }
+    },
+    {
+      "id": "support-billing",
+      "title": "Billing Support Inquiry",
+      "description": "Customer support case showing how billing disputes get categorized and routed",
+      "input": "From: customer@company.com\nSubject: Billing Issue - Account ACC-789456\n\nHi, I'm having trouble with my invoice. My account number is ACC-789456 and I was charged $299 last month but I thought I downgraded to the basic plan which should be $99. Can you help me understand what happened? Also, can I get a refund for the difference?",
+      "translation_notes": {
+        "intent_extraction": "Recognizes billing support by keywords: 'invoice', 'charged', 'account number', 'refund'",
+        "routing_logic": "Routes to billing specialists due to refund request and plan discrepancy",
+        "account_parsing": "Extracts account number and billing amounts for reference",
+        "issue_classification": "Identifies overcharge dispute and plan downgrade confusion",
+        "resolution_tracking": "Captures specific refund request for follow-up"
+      },
+      "response": {
+        "intent": "Billing Support - Overcharge Dispute",
+        "intent_confidence": 0.91,
+        "routing": "Customer Support > Billing Team",
+        "routing_confidence": 0.94,
+        "confidence": 0.91,
+        "items": [
+          {
+            "sku": "ACC-789456",
+            "description": "Customer Account Reference",
+            "quantity": 1,
+            "category": "Account ID",
+            "confidence": 0.96,
+            "extraction_source": "My account number is ACC-789456"
+          },
+          {
+            "sku": "BASIC-PLAN",
+            "description": "Basic Plan ($99/month)",
+            "quantity": 1,
+            "category": "Subscription",
+            "confidence": 0.83,
+            "extraction_source": "downgraded to the basic plan which should be $99"
+          }
+        ],
+        "kb_matches": [
+          {
+            "title": "Billing Dispute Resolution Process",
+            "confidence": 0.87,
+            "relevance": "High",
+            "section": "Refund Procedures",
+            "row_start": 23,
+            "row_end": 41,
+            "match_reason": "Customer requesting refund for billing discrepancy"
+          },
+          {
+            "title": "Plan Downgrade Policy",
+            "confidence": 0.83,
+            "relevance": "High",
+            "section": "Effective Date Rules",
+            "row_start": 67,
+            "row_end": 89,
+            "match_reason": "Plan downgrade timing confusion mentioned"
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "description": "No specific policy for mid-cycle plan changes",
+            "confidence": 0.85,
+            "gap_reason": "Plan change timing rules not clearly documented"
+          },
+          {
+            "description": "Refund approval process not clearly documented",
+            "confidence": 0.79,
+            "gap_reason": "Refund procedures need clarification for this scenario"
+          }
+        ],
+        "extracted_metadata": {
+          "account_id": "ACC-789456",
+          "disputed_amount": "$200",
+          "expected_plan": "Basic ($99)",
+          "charged_amount": "$299",
+          "issue_type": "Overcharge"
+        }
+      }
+    },
+    {
+      "id": "technical-support",
+      "title": "Technical Integration Issue",
+      "description": "Technical support case showing how API failures get prioritized and categorized",
+      "input": "From: developer@techcorp.com\nSubject: URGENT: API 403 Errors Affecting 1,200+ Users\n\nOur API integration stopped working yesterday around 3 PM EST. We're getting 403 Forbidden errors when trying to sync user data. Our app ID is APP-2024-X71. We haven't changed anything on our end. This is affecting 1,200+ users. Please help ASAP.",
+      "translation_notes": {
+        "intent_extraction": "Recognizes technical support by keywords: 'API integration', '403 Forbidden', 'app ID'",
+        "routing_logic": "Routes to integration specialists due to API error and user impact scale",
+        "error_classification": "Identifies specific error code (403 Forbidden) and failure timing",
+        "impact_assessment": "Captures user impact (1,200+) and urgency (ASAP)",
+        "system_identification": "Extracts app ID for troubleshooting reference"
+      },
+      "response": {
+        "intent": "Technical Support - API Integration Failure",
+        "intent_confidence": 0.96,
+        "routing": "Technical Support > Integration Team",
+        "routing_confidence": 0.98,
+        "confidence": 0.96,
+        "items": [
+          {
+            "sku": "APP-2024-X71",
+            "description": "Application ID",
+            "quantity": 1,
+            "category": "Integration",
+            "confidence": 0.97,
+            "extraction_source": "Our app ID is APP-2024-X71"
+          },
+          {
+            "sku": "API-SYNC",
+            "description": "User Data Synchronization API",
+            "quantity": 1,
+            "category": "Service",
+            "confidence": 0.84,
+            "extraction_source": "trying to sync user data"
+          }
+        ],
+        "kb_matches": [
+          {
+            "title": "API Error Code Reference",
+            "confidence": 0.94,
+            "relevance": "High",
+            "section": "403 Forbidden Troubleshooting",
+            "row_start": 127,
+            "row_end": 145,
+            "match_reason": "403 Forbidden error specifically mentioned"
+          },
+          {
+            "title": "Integration Health Monitoring",
+            "confidence": 0.88,
+            "relevance": "Medium",
+            "section": "Status Check Procedures",
+            "row_start": 34,
+            "row_end": 52,
+            "match_reason": "API integration failure requires health monitoring"
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "description": "No documented API changes for Dec 2024",
+            "confidence": 0.92,
+            "gap_reason": "No internal changes but API failure suggests system changes"
+          },
+          {
+            "description": "Missing escalation process for 1000+ user impacts",
+            "confidence": 0.87,
+            "gap_reason": "1,200+ user impact requires escalation procedure"
+          }
+        ],
+        "extracted_metadata": {
+          "app_id": "APP-2024-X71",
+          "error_code": "403 Forbidden",
+          "failure_time": "3 PM EST yesterday",
+          "affected_users": "1,200+",
+          "priority": "Critical"
+        }
+      }
+    },
+    {
+      "id": "feature-request",
+      "title": "Feature Request Email",
+      "description": "Customer requesting new feature with positive sentiment",
+      "input": "From: sarah.johnson@techstartup.com\nSubject: Feature Request - Export Functionality\n\nHi there,\n\nI've been using your platform for the past 6 months and I'm really happy with it! However, I have a feature request that would make our workflow much more efficient.\n\nWould it be possible to add a bulk export feature that allows us to export all our data to CSV format? Currently, we have to export each record individually which is quite time-consuming when dealing with hundreds of entries.\n\nThis would be incredibly helpful for our monthly reporting process. I'd also love to see the option to schedule automated exports if that's something you're considering.\n\nThanks for building such a great product! Looking forward to hearing your thoughts.\n\nBest regards,\nSarah Johnson\nOperations Manager",
+      "response": {
+        "intent": "Feature Request - Export Functionality",
+        "intent_confidence": 0.92,
+        "routing": "Product Team > Feature Requests",
+        "routing_confidence": 0.89,
+        "confidence": 0.92,
+        "items": [
+          {
+            "sku": "FEATURE-EXPORT",
+            "description": "Bulk CSV Export Feature",
+            "quantity": 1,
+            "category": "Feature Request",
+            "confidence": 0.94,
+            "extraction_source": "bulk export feature that allows us to export all our data to CSV format"
+          },
+          {
+            "sku": "FEATURE-SCHEDULE",
+            "description": "Scheduled Automated Exports",
+            "quantity": 1,
+            "category": "Feature Request",
+            "confidence": 0.87,
+            "extraction_source": "schedule automated exports"
+          }
+        ],
+        "kb_matches": [
+          {
+            "title": "Export Features Documentation",
+            "confidence": 0.85,
+            "relevance": "High",
+            "section": "Current Export Capabilities",
+            "row_start": 45,
+            "row_end": 67,
+            "match_reason": "Request relates to existing export functionality"
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "description": "No roadmap information for bulk export features",
+            "confidence": 0.88,
+            "gap_reason": "Feature requests not tracked in knowledge base"
+          }
+        ],
+        "extracted_metadata": {
+          "customer_email": "sarah.johnson@techstartup.com",
+          "customer_tenure": "6 months",
+          "use_case": "Monthly reporting",
+          "priority": "Medium"
+        }
+      }
+    },
+    {
+      "id": "account-question",
+      "title": "General Account Question",
+      "description": "Simple account inquiry with neutral sentiment",
+      "input": "From: mike.peters@retail-corp.com\nSubject: Question about account settings\n\nHello,\n\nI have a quick question about my account. I'm trying to update my notification preferences but I can't seem to find the right setting in my dashboard.\n\nCould you point me in the right direction? I want to receive email notifications for project updates but not for comments.\n\nThanks in advance for your help.\n\nMike Peters",
+      "response": {
+        "intent": "Account Settings Inquiry",
+        "intent_confidence": 0.88,
+        "routing": "Customer Support > Account Management",
+        "routing_confidence": 0.91,
+        "confidence": 0.88,
+        "items": [
+          {
+            "sku": "ACCOUNT-NOTIF",
+            "description": "Notification Preferences Update",
+            "quantity": 1,
+            "category": "Account Setting",
+            "confidence": 0.90,
+            "extraction_source": "update my notification preferences"
+          }
+        ],
+        "kb_matches": [
+          {
+            "title": "Notification Settings Guide",
+            "confidence": 0.93,
+            "relevance": "High",
+            "section": "Email Notification Preferences",
+            "row_start": 12,
+            "row_end": 34,
+            "match_reason": "Direct match for notification preference questions"
+          }
+        ],
+        "knowledge_gaps": [],
+        "extracted_metadata": {
+          "customer_email": "mike.peters@retail-corp.com",
+          "issue_type": "navigation",
+          "priority": "Low"
+        }
+      }
+    }
+  ],
+  "feedback_tags": [
+    "Intent Correct",
+    "Intent Wrong", 
+    "Routing Accurate",
+    "Routing Needs Update",
+    "Items Missing",
+    "Items Incorrect",
+    "Items Comprehensive",
+    "KB Match Helpful",
+    "KB Match Irrelevant",
+    "Gaps Well Identified",
+    "Missing Key Gaps",
+    "Response Too Generic",
+    "Response Too Detailed",
+    "Technical Accuracy High",
+    "Technical Accuracy Low",
+    "Industry Knowledge Strong",
+    "Industry Knowledge Weak",
+    "Compliance Understanding Good",
+    "Compliance Understanding Poor",
+    "Urgency Recognized",
+    "Urgency Missed",
+    "Cost Estimation Helpful",
+    "Cost Estimation Missing",
+    "Extraction Complete",
+    "Extraction Incomplete"
+  ]
+}
